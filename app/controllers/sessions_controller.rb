@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
     if user&.authenticate(params[:session][:password])
       log_in(user)
       flash[:notice] = "ログインしました"
-      redirect_to tasks_path(user.id)
+      redirect_to tasks_path
     else
       flash[:alert] = "メールアドレスまたはパスワードに誤りがあります"
       render :new
