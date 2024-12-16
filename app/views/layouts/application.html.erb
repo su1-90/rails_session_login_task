@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= yield(:title) || "CdpWebRailsSessionLoginTask" %></title>
+  <title><%= yield(:title) || "CdpWebRailsSessionLoginTask" %></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -13,8 +13,9 @@
     <!-- <p id="notice"><%= notice %></p> -->
 
     <% flash.each do |key, value| %>
-      <%= content_tag(:div, value, class: "#{key}") %>
+      <%= content_tag(:div, value, class: "alert alert-#{key}") %>
     <% end %>
+    
     <% if logged_in? %>
       <%= link_to "タスク一覧", tasks_path(current_user), id: "tasks-index" %>
       <%= link_to "タスクを登録する", new_task_path, id: "tasks-new" %>

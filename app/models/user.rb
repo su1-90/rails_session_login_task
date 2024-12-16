@@ -24,4 +24,6 @@ class User < ApplicationRecord
 
   # パスワード（確認）の一致チェック
   validates :password_confirmation, presence: { message: "パスワード（確認）を入力してください" }, on: :create
+
+  has_many :tasks, dependent: :delete_all
 end
