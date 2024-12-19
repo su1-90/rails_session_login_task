@@ -31,6 +31,7 @@ class UsersController < ApplicationController
       flash[:notice] = "アカウントを更新しました"
       redirect_to @user
     else
+      flash[:alert] = "更新に失敗しました"
       render :edit
     end
   end

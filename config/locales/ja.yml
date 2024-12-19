@@ -2,14 +2,21 @@ ja:
   activerecord:
     models:
       task: タスク
+      user: ユーザー
     attributes:
       task:
         title: タイトル
         content: 内容
+      user:
+        name: 名前
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: パスワード（確認）
   errors:
     format: "%{attribute}%{message}"
     messages:
       blank: を入力してください
+      confirmation: パスワード（確認）とパスワードの入力が一致しません
   helpers:
     submit:
       create: 登録する

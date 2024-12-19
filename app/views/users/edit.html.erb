@@ -11,5 +11,8 @@
   <%= f.password_field :password_confirmation %>
   <br>
   <br>
-  <%= f.submit "更新する", id: "back" %>
+  <%= f.submit "更新する" %>
+  <br>
+  <br>
+  <%= link_to "戻る", user_path, id: "back" %>
 <% end %>

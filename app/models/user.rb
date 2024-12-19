@@ -2,11 +2,11 @@ class User < ApplicationRecord
   before_validation { email.downcase! }
 
   # 名前のバリデーション
-  validates :name, presence: { message: "名前を入力してください" }, 
+  validates :name, presence: true, 
                    length: { maximum: 30 }
 
   # メールアドレスのバリデーション
-  validates :email, presence: { message: "メールアドレスを入力してください" }, 
+  validates :email, presence: true, 
                     length: { maximum: 255 },
                     uniqueness: { message: "メールアドレスはすでに使用されています" },
                     format: { 
@@ -14,16 +14,17 @@ class User < ApplicationRecord
                       message: "有効なメールアドレスを入力してください"
                     }
 
-  # パスワードのバリデーション
+  # # パスワードのバリデーション
   has_secure_password
-  validates :password_digest, length: { 
+
+  validates :password, length: { 
     minimum: 6, 
     message: "パスワードは6文字以上で入力してください" 
   },
   on: :create
 
   # パスワード（確認）の一致チェック
-  validates :password_confirmation, presence: { message: "パスワード（確認）を入力してください" }, on: :create
+  # validates :password_confirmation, presence: true, on: :create
 
   has_many :tasks, dependent: :delete_all
 end
