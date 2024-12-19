@@ -16,6 +16,7 @@ ja:
     format: "%{attribute}%{message}"
     messages:
       blank: を入力してください
+      too_short: は%{count}文字以上で入力してください
       confirmation: パスワード（確認）とパスワードの入力が一致しません
   helpers:
     submit:

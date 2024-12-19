@@ -31,10 +31,12 @@ class UsersController < ApplicationController
       flash[:notice] = "アカウントを更新しました"
       redirect_to @user
     else
+      Rails.logger.debug "Errors: #{@user.errors.full_messages}" # エラー内容をログに出力
       flash[:alert] = "更新に失敗しました"
       render :edit
     end
   end
+  
 
   def destroy
     @user = User.find(params[:id])

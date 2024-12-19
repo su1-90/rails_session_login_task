@@ -1,6 +1,17 @@
 <h1>アカウント編集ページ</h1>
 
-<%= form_with model: @user, url: user_path(@user), method: :patch do |f| %>
+<% if @user.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@user.errors.count, "error") %> が発生しました:</h2>
+    <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_with(model: @user, local: true, url: user_path(@user), method: :patch) do |f| %>
   <%= f.label :name, "名前" %>
   <%= f.text_field :name, value: @user.name %>
   <%= f.label :email, "メールアドレス" %>

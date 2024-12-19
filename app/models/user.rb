@@ -17,14 +17,15 @@ class User < ApplicationRecord
   # # パスワードのバリデーション
   has_secure_password
 
-  validates :password, length: { 
+  validates :password, presence: true, length: { 
     minimum: 6, 
     message: "パスワードは6文字以上で入力してください" 
   },
-  on: :create
-
+  on: [:create, :update]
+  
+  
   # パスワード（確認）の一致チェック
   # validates :password_confirmation, presence: true, on: :create
-
+  
   has_many :tasks, dependent: :delete_all
 end
